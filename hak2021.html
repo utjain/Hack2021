@@ -1,58 +1,58 @@
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+  <style>
+    .center {
+      margin-left: auto;
+      margin-top: auto;
+      width: 100%;
+    }
 
-<style>
-  .button {
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    vertical-align: top;
-  }
+    df-messenger {
+      --df-messenger-bot-message: #878fac;
+      --df-messenger-button-titlebar-color: #df9b56;
+      --df-messenger-chat-background-color: #fafafa;
+      --df-messenger-font-color: white;
+      --df-messenger-send-icon: #878fac;
+      --df-messenger-user-message: #479b3d;
+    }
+  </style>
 
-  .center {
-    margin-left: auto;
-    margin-top: auto;
-    width: 100%;
-  }
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1">
 
-  .button4 {
-    border-radius: 12px;
-  }
-</style>
+  </script>
+  <script>
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.onresult = (event) => {
+      const speechToText = event.results[0][0].transcript;
+      if (speechToText === "start") {
+        myFunction();
+      }
+    }
+    recognition.start();
+    function myFunction() {
+      document.getElementById("test").expand = true;
+    }
 
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1">
-window.load() {
+  </script>
 
-}
-
-</script>
-
-<table class="center" border="0">
-  <tr>
-    <td style="vertical-align:top"><img src="Saksham.jpg"  width="250" height="60"/></td>
-    <td style="text-align:right;"><img src="db_logo.gif" width="60" height="60" /></td>
-  </tr>
-</table>
-<table class="center" border="0" width=50%>
-  <tr>
-    <td style="vertical-align:center;text-align:center;padding-top: auto;height: 480px;">
-      <img src="disability_Imag.png">
-      <h1>About US</h1>
-      <p>This app is for creating the token for banking services. PLEASE speak or click start </p>
-    </td>
-    
-      
-  </tr>
-
-</table>
-<df-messenger df-cx="true" location="asia-northeast1" chat-title="Financial services"
-        agent-id="e6f8ff44-12aa-4c2b-9264-b6d1eb298c96" language-code="en" />
+  <table class="center" border="0">
+    <tr>
+      <td style="vertical-align:top"><img src="Saksham.jpg" width="250" height="60" /></td>
+      <td style="text-align:right;"><img src="db_logo.gif" width="60" height="60" /></td>
+    </tr>
+  </table>
+  <table class="center" border="0" width=50%>
+    <tr>
+      <td style="vertical-align:center;text-align:center;padding-top: auto;height: 480px;">
+        <img src="disability_Imag.png">
+        <h1>About US</h1>
+        <p>This app is for creating the token for banking services. PLEASE speak or click start </p>
+      </td>
+    </tr>
+  </table>
+  <df-messenger id="test" df-cx="true" location="asia-northeast1" chat-title="Financial services"
+    agent-id="e6f8ff44-12aa-4c2b-9264-b6d1eb298c96" language-code="en" wait-open="true" />
+</body>
+</html>

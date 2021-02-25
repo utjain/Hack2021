@@ -1,0 +1,63 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+  <style>
+    .center {
+      margin-left: auto;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    df-messenger {
+      --df-messenger-bot-message: #878fac;
+      --df-messenger-button-titlebar-color: #df9b56;
+      --df-messenger-chat-background-color: #fafafa;
+      --df-messenger-font-color: white;
+      --df-messenger-send-icon: #878fac;
+      --df-messenger-user-message: #479b3d;
+    }
+  </style>
+
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1">
+
+  </script>
+  <script>
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.onresult = (event) => {
+      const speechToText = event.results[0][0].transcript;
+      if (speechToText === "start") {
+        myFunction();
+      }
+    }
+    recognition.start();
+    function myFunction() {
+      document.getElementById("test").expand = true;
+    }
+
+  </script>
+
+  <table class="center" border="0">
+    <tr>
+      <td style="vertical-align:top"><img src="Saksham.jpg" width="250" height="60" /></td>
+      <td style="text-align:right;"><img src="db_logo.gif" width="60" height="60" /></td>
+    </tr>
+  </table>
+  <table class="center" border="0" width=50%>
+    <tr>
+      <td style="vertical-align:center;text-align:center;padding-top: auto;height: 480px;">
+        <img src="disability_top.PNG"><BR>
+        <img src="disability_bottom.PNG">
+        <h1>About US</h1>
+        <p>This app is for creating the token for banking services. PLEASE speak or click start </p>
+      </td>
+      <!-- <td> iframe
+        <iframe height="430" width="350" src="https://bot.dialogflow.com/17e4a1fa-a6c0-44e4-9b62-aace15288d28"></iframe>
+      </td> -->
+    </tr>
+  </table>
+  <df-messenger id="test" df-cx="true" location="asia-northeast1" chat-title="Self Service"
+    agent-id="e6f8ff44-12aa-4c2b-9264-b6d1eb298c96" language-code="en" wait-open="true" />
+
+</body>
+</html>
